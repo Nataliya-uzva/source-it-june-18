@@ -18,41 +18,41 @@ for(let i = 0; i < tableSize; i++){
     newTd.dataset.line = i + '';
     newTd.dataset.column = j + '';
 
-    newTd.addEventListener('click', function(event) {
-      if (!event && !event.target) {
-        return;
-      }
-
-      removeClass(table, 'i-am-active');
-
-      const elem = event.target;
-      const line = +elem.dataset.line;
-      const column = +elem.dataset.column;
-
-      if(elem.previousElementSibling) {
-
-        elem.previousElementSibling.classList.add('i-am-active');
-      }
-
-      if(elem.nextElementSibling) {
-
-        elem.nextElementSibling.classList.add('i-am-active');
-      }
-
-      if (line === 0) {
-        table.rows[line + 1].cells[column].classList.add('i-am-active');
-        return;
-      }
-
-      if (line === tableSize - 1) {
-        table.rows[line - 1].cells[column].classList.add('i-am-active');
-        return;
-      }
-
-      table.rows[line + 1].cells[column].classList.add('i-am-active');
-      table.rows[line - 1].cells[column].classList.add('i-am-active');
-
-    });
+    // newTd.addEventListener('click', function(event) {
+    //   if (!event && !event.target) {
+    //     return;
+    //   }
+    //
+    //   removeClass(table, 'i-am-active');
+    //
+    //   const elem = event.target;
+    //   const line = +elem.dataset.line;
+    //   const column = +elem.dataset.column;
+    //
+    //   if(elem.previousElementSibling) {
+    //
+    //     elem.previousElementSibling.classList.add('i-am-active');
+    //   }
+    //
+    //   if(elem.nextElementSibling) {
+    //
+    //     elem.nextElementSibling.classList.add('i-am-active');
+    //   }
+    //
+    //   if (line === 0) {
+    //     table.rows[line + 1].cells[column].classList.add('i-am-active');
+    //     return;
+    //   }
+    //
+    //   if (line === tableSize - 1) {
+    //     table.rows[line - 1].cells[column].classList.add('i-am-active');
+    //     return;
+    //   }
+    //
+    //   table.rows[line + 1].cells[column].classList.add('i-am-active');
+    //   table.rows[line - 1].cells[column].classList.add('i-am-active');
+    //
+    // });
     newTr.appendChild(newTd);
   }
 
@@ -70,6 +70,42 @@ function removeClass(table, className) {
 }
 
 table.appendChild(tbody);
+
+table.addEventListener('click', function(event) {
+  if (!event || !event.target || event.target.tagName !== 'TD') {
+    return;
+  }
+
+  removeClass(table, 'i-am-active');
+
+  const elem = event.target;
+  const line = +elem.dataset.line;
+  const column = +elem.dataset.column;
+
+  if(elem.previousElementSibling) {
+
+    elem.previousElementSibling.classList.add('i-am-active');
+  }
+
+  if(elem.nextElementSibling) {
+
+    elem.nextElementSibling.classList.add('i-am-active');
+  }
+
+  if (line === 0) {
+    table.rows[line + 1].cells[column].classList.add('i-am-active');
+    return;
+  }
+
+  if (line === tableSize - 1) {
+    table.rows[line - 1].cells[column].classList.add('i-am-active');
+    return;
+  }
+
+  table.rows[line + 1].cells[column].classList.add('i-am-active');
+  table.rows[line - 1].cells[column].classList.add('i-am-active');
+});
+
 document.body.appendChild(table);
 
 const trList = document.querySelectorAll('tr');
