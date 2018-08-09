@@ -1,0 +1,49 @@
+body {
+    margin: 20px auto;
+}
+
+li,
+.button {
+    display: block;
+    border: 1px solid silver;
+    border-radius: 2px;
+    font: bold 14px Tahoma;
+    padding: 10px 5px;
+    color: darkblue;
+    margin:0;
+    cursor: pointer;
+}
+
+li:hover,
+.button:hover {
+    border: 1px solid darkblue;
+    background-color: lightgray;
+}
+
+ul {
+    list-style-type: none;
+    margin: auto;
+    padding: 0;
+    transition: height 2s ease-in-out;
+}
+
+.img-wrap {
+    display: block;
+    margin: 20px auto;
+    width: 350px;
+    height: 350px;
+    border: 1px solid silver;
+    border-radius: 5px;
+    text-align: center;
+    overflow: hidden;
+}
+
+img {
+    max-height: 350px;
+    max-width: 350px;
+}
+
+.select-wrap {
+    width: 100px;
+    margin: 0 auto;
+}
